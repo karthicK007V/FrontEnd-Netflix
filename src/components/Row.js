@@ -22,13 +22,13 @@ const Row = ({title,fetchurl,isLargeRow}) => {
       },[])
 
       const handelclick=(movie)=>{
-      //  console.log(movie);
+       console.log(movie);
         if(trailerUrl){
           setTrailerUrl('')
         }
         else
         {
-          movieTrailer( `${movie.title}`||"", {multi: true} )
+          movieTrailer( `${movie.title}`, {multi: true} )
   // .then( response =>{
   //   setTrailerUrl(response[0])
     
@@ -36,7 +36,7 @@ const Row = ({title,fetchurl,isLargeRow}) => {
           // movieTrailer(movie?.title || "",{id: true, multi: true})
           .then((url)=>{
             // console.log(url[1]);
-            const urlparams=new URLSearchParams(new URL(url[1]).search);
+            const urlparams=new URLSearchParams(new URL(url[1]||url).search);
             setTrailerUrl(urlparams.get("v"))
           }).catch((error)=>console.log("error",error))
 
